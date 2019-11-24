@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateTaskComponent implements OnInit {
 
+  createTask = {}
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  create(){
+    
   }
 
 }
