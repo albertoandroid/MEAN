@@ -19,6 +19,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import { HttpClientModule } from '@angular/common/http'
 
+import { AuthService } from './service/auth.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,7 @@ import { HttpClientModule } from '@angular/common/http'
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
