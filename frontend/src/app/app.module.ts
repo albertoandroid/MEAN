@@ -17,6 +17,8 @@ import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatCardModule} from '@angular/material/card'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
+import { HttpClientModule } from '@angular/common/http'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
     MatFormFieldModule,
     MatCardModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
