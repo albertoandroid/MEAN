@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res)
+          localStorage.setItem('token', res.jwtToken)
         },
         err => console.log(err)
       )
