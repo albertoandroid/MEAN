@@ -17,7 +17,8 @@ import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatCardModule} from '@angular/material/card'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { TokenInterceptorService } from './service/token-interceptor.service'
 
 import { AuthService } from './service/auth.service'
 import { AuthGuard } from './guard/auth.guard'
@@ -44,7 +45,12 @@ import { AuthGuard } from './guard/auth.guard'
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
