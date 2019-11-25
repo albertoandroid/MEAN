@@ -37,7 +37,16 @@ export class ListTaskComponent implements OnInit {
       )
   }
   delete(deleteTask){
-
+    this.taskService.deleteTask(deleteTask)
+      .subscribe(
+        res=>{
+          const index = this.tasks.indexOf(deleteTask)
+          if(index>-1){
+            this.tasks.splice(index,1)
+          }
+        },
+        err=>console.log(err)
+      )
   }
 
 }

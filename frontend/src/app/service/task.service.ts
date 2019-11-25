@@ -20,6 +20,12 @@ export class TaskService {
     return this.http.put<any>(this.taskUrl, task)
   }
 
+  deleteTask(task){
+    const _id = task._id
+    const url = `${this.taskUrl}/${_id}`
+    return this.http.delete<any>(url)
+  }
+
   getTasks(){
     return this.http.get<any>(this.listTaskUrl)
   }
