@@ -43,15 +43,15 @@
     color: #FFFFFF
   }
   
-  .btSeletDone{
+  .btSelectDone{
     color: #3cb44b;
   }
   
-  .btSeletInProgress{
+  .btSelectInProgress{
     color: #f58231;
   }
   
-  .btSeletToDo{
+  .btSelectTodo{
     color: #e6194b;
   }
   
