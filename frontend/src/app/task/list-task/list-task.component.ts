@@ -23,7 +23,14 @@ export class ListTaskComponent implements OnInit {
   }
 
   changeStatus(selectTask, status){
-
+    this.taskService.editTask(selectTask)
+      .subscribe(
+        res=>{
+          console.log(res)
+          selectTask.status = status
+        },
+        err=>console.log(err)
+      )
   }
   delete(deleteTask){
 
