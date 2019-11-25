@@ -11,6 +11,7 @@ import { ListTaskComponent } from './task/list-task/list-task.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatButtonModule} from '@angular/material/button'
+import {MatExpansionModule} from '@angular/material/expansion'
 
 import {MatInputModule} from '@angular/material/input'
 import {MatFormFieldModule} from '@angular/material/form-field'
@@ -44,7 +45,8 @@ import { AuthGuard } from './guard/auth.guard'
     MatCardModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule
   ],
   providers: [AuthService, TaskService, AuthGuard,
   {
