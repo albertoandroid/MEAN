@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../service/task.service'
+import { MatSnackBar } from '@angular/material'
 
 @Component({
   selector: 'app-list-task',
@@ -10,7 +11,8 @@ export class ListTaskComponent implements OnInit {
 
   tasks = [] 
 
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.taskService.getTasks()
@@ -43,6 +45,9 @@ export class ListTaskComponent implements OnInit {
           const index = this.tasks.indexOf(deleteTask)
           if(index>-1){
             this.tasks.splice(index,1)
+            this.snackBar.open("Tarea Borrada", null, {
+              duration: 2000
+            })
           }
         },
         err=>console.log(err)
