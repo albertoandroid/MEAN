@@ -21,6 +21,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { TokenInterceptorService } from './service/token-interceptor.service'
 
 import { AuthService } from './service/auth.service'
+import { TaskService } from './service/task.service'
 import { AuthGuard } from './guard/auth.guard'
 
 @NgModule({
@@ -45,7 +46,7 @@ import { AuthGuard } from './guard/auth.guard'
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, AuthGuard,
+  providers: [AuthService, TaskService, AuthGuard,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
