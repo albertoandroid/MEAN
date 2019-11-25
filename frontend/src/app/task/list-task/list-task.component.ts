@@ -23,13 +23,17 @@ export class ListTaskComponent implements OnInit {
   }
 
   changeStatus(selectTask, status){
+    const temporalStatus = selectTask.status
+    selectTask.status = status
     this.taskService.editTask(selectTask)
       .subscribe(
         res=>{
-          console.log(res)
           selectTask.status = status
         },
-        err=>console.log(err)
+        err=>{
+          console.log(err)
+          selectTask.status = temporalStatus
+        }
       )
   }
   delete(deleteTask){
