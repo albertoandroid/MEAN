@@ -7,8 +7,8 @@
     </ul>
     <span class="spacer"></span>
     <ul>
-            <a mat-button routerLink="signup">Sign Up</a>
-            <a mat-button routerLink="login">Log in</a>
-            <a mat-button >Logout</a>
+            <a *ngIf="!authService.isLogged()" mat-button routerLink="signup">Sign Up</a>
+            <a *ngIf="!authService.isLogged()" mat-button routerLink="login">Log in</a>
+            <a *ngIf="authService.isLogged()" mat-button (click)="authService.logoutUser()">Logout</a>
     </ul>
 </mat-toolbar>
