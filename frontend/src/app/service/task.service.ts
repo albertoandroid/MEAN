@@ -15,4 +15,8 @@ export class TaskService {
   createTask(task){
     return this.http.post<any>(this.taskUrl, task)
   }
+
+  getTasks(){
+    return this.http.get<any>(this.listTaskUrl)
+  }
 }
