@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../service/task.service'
 import { MatSnackBar } from '@angular/material'
+import { HttpErrorResponse } from '@angular/common/http'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-list-task',
@@ -12,7 +14,8 @@ export class ListTaskComponent implements OnInit {
   tasks = [] 
 
   constructor(private taskService: TaskService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private router: Router) { }
 
   ngOnInit() {
     this.taskService.getTasks()
@@ -50,7 +53,17 @@ export class ListTaskComponent implements OnInit {
             })
           }
         },
-        err=>console.log(err)
+        err=>{
+          console.log(err)
+          if(err instanceof HttpErrorResponse){
+            if(err.status === 401){
+              this.snackBar.open("No estas logeado", null, {
+                duration: 2000
+              })
+              this.router.navigate(['/login'])
+            }
+          }
+        }
       )
   }
 
