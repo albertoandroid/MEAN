@@ -14,6 +14,9 @@
                 <mat-panel-description>
                     {{task.description}}
                 </mat-panel-description>
+                <mat-panel-description>
+                    <img class="image_center" src={{task.imageUrl}}>
+                </mat-panel-description>
                 <mat-action-row>
                     <button class="btSelectTodo" mat-button (click)="changeStatus(task, 'to-do')">ToDo</button>
                     <button class="btSelectInProgress" mat-button (click)="changeStatus(task, 'in progress')">In Progress</button>

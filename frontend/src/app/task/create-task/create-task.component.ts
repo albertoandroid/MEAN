@@ -34,7 +34,7 @@ export class CreateTaskComponent implements OnInit {
     const fd = new FormData()
     fd.append('image', this.selectedFile, this.selectedFile.name)
     fd.append('name', this.createTask.name)
-    fd.append('desceiption', this.createTask.description)
+    fd.append('description', this.createTask.description)
     this.taskService.createImageUpload(fd)
       .subscribe(
         res=>{
