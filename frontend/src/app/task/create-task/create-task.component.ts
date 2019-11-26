@@ -25,6 +25,7 @@ export class CreateTaskComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res)
+          this.router.navigate(['/tasks'])
         },
         err => {
           console.log(err)
