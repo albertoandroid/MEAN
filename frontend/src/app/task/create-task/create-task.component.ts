@@ -11,7 +11,11 @@ import { Router } from '@angular/router'
 })
 export class CreateTaskComponent implements OnInit {
 
-  createTask = {}
+  //createTask = {}
+  createTask = {
+    name: null,
+    description: null
+  }
   selectedFile: File = null
 
   constructor(private taskService: TaskService,
@@ -24,6 +28,30 @@ export class CreateTaskComponent implements OnInit {
   onFileSelected(event){
     console.log(event)
     this.selectedFile = <File>event.target.files[0]
+  }
+
+  createUploadImage(){
+    const fd = new FormData()
+    fd.append('image', this.selectedFile, this.selectedFile.name)
+    fd.append('name', this.createTask.name)
+    fd.append('desceiption', this.createTask.description)
+    this.taskService.createImageUpload(fd)
+      .subscribe(
+        res=>{
+          this.router.navigate(['/tasks'])
+        },
+        err => {
+          console.log(err)
+          if(err instanceof HttpErrorResponse){
+            if(err.status === 401){
+              this.snackBar.open("No estas logeado... Enviando a Login", null, {
+                duration: 2000
+              })
+              this.router.navigate(['/login'])
+            }
+          }
+        }
+      )
   }
 
   create(){
