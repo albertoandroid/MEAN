@@ -12,12 +12,18 @@ import { Router } from '@angular/router'
 export class CreateTaskComponent implements OnInit {
 
   createTask = {}
+  selectedFile: File = null
 
   constructor(private taskService: TaskService,
     private router: Router,
     private snackBar: MatSnackBar) { }
 
   ngOnInit() {
+  }
+
+  onFileSelected(event){
+    console.log(event)
+    this.selectedFile = <File>event.target.files[0]
   }
 
   create(){

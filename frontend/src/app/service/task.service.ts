@@ -10,7 +10,13 @@ export class TaskService {
 
   private taskUrl = "http://localhost:3003/api/task"
 
+  private taskImageUploadUrl = "http://localhost:3003/api/task/upload"
+
   constructor(private http: HttpClient) { }
+
+  createImageUpload(task){
+    return this.http.post<any>(this.taskImageUploadUrl, task)
+  }
 
   createTask(task){
     return this.http.post<any>(this.taskUrl, task)
