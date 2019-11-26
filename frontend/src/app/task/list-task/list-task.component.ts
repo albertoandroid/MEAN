@@ -38,6 +38,14 @@ export class ListTaskComponent implements OnInit {
         err=>{
           console.log(err)
           selectTask.status = temporalStatus
+          if(err instanceof HttpErrorResponse){
+            if(err.status === 401){
+              this.snackBar.open("No estas logeado... Enviando a Login", null, {
+                duration: 2000
+              })
+              this.router.navigate(['/login'])
+            }
+          }
         }
       )
   }
